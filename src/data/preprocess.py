@@ -8,7 +8,8 @@ from load_data import diabetes
 
 #change male and female to 0 and 1
 gender_map = {'Male': 0, 
-              'Female': 1
+              'Female': 1,
+              'Other':2
               }
 
 diabetes['gender'] = diabetes['gender'].replace(gender_map) 
