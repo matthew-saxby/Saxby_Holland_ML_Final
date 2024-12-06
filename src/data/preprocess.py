@@ -24,4 +24,6 @@ smoking_map = {'No Info':0,
 
 diabetes['smoking_history'] = diabetes['smoking_history'].replace(smoking_map) 
 
+diabetes.to_csv('diabetes_processed.csv', index=False)
+
 print(diabetes.head())
