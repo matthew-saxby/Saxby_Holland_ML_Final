@@ -9,7 +9,8 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn import set_config
 from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import GaussianNB
-from sklearn.metrics import accuracy_score, precision_score, recall_score
+from sklearn.metrics import accuracy_score, precision_score, recall_score, confusion_matrix, ConfusionMatrixDisplay 
+import seaborn as sns
 
 
 diabetes_processed = pd.read_csv('diabetes_processed.csv')
@@ -58,15 +59,12 @@ dt_y_pred_test = model.predict(X_val[features])
 dt_train_accuracy = metrics.accuracy_score(y_train,dt_y_pred_train)
 dt_train_f1 = metrics.f1_score(y_train, dt_y_pred_train)
 
+
 #Evaluate the test model
 dt_val_accuracy = metrics.accuracy_score(y_val,dt_y_pred_test)
 dt_val_f1 = metrics.f1_score(y_val,dt_y_pred_test)
 
 
-print("----DT Performance----")
-print("")
-print("")
-printPerformance(dt_train_accuracy, dt_train_f1, dt_val_accuracy, dt_val_f1)
 
 
 
@@ -75,6 +73,34 @@ val_prob = model.predict_proba(X_val[features])[:, 1]  # Probabilities for the p
 
 fpr, tpr, thresholds = metrics.roc_curve(y_val, val_prob)
 roc_auc = metrics.roc_auc_score(y_val, val_prob)
+
+'''count plot for the Dt'''
+'''
+plt.figure(figsize=(10, 6))
+sns.countplot(x=dt_y_pred_test, hue=y_val, palette='pastel')
+plt.xlabel('Predicted Class')
+plt.ylabel('Count')
+plt.title('Count Plot of Predicted vs Actual Diabetes Status')
+plt.xticks(ticks=[0, 1], labels=['No Diabetes', 'Diabetes'])
+plt.legend(title='Actual Class', labels=['No Diabetes', 'Diabetes'])
+plt.show()
+'''
+'''
+# Create and display the confusion matrix
+cm = confusion_matrix(y_val, dt_y_pred_test)
+disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=model.classes_)
+disp.plot(cmap=plt.cm.Blues)
+plt.title('Confusion Matrix for Decision Tree Classifier')
+plt.show()
+
+# Print the confusion matrix values
+print("Confusion Matrix:")
+print(cm)
+'''
+print("----DT Performance----")
+print("")
+print("")
+printPerformance(dt_train_accuracy, dt_train_f1, dt_val_accuracy, dt_val_f1)
 
 '''
 # Compute ROC-AUC and plot ROC curve
@@ -126,6 +152,29 @@ knn_val_prob = knn_model.predict_proba(X_val)[:, 1]  # Probabilities for the pos
 
 fpr_knn, tpr_knn, thresholds_nb = metrics.roc_curve(y_val, knn_val_prob)
 roc_auc_knn = metrics.roc_auc_score(y_val, knn_val_prob)
+'''
+# Create and display the confusion matrix for KNN
+knn_cm = confusion_matrix(y_val, knn_y_pred_val)
+knn_disp = ConfusionMatrixDisplay(confusion_matrix=knn_cm, display_labels=knn_model.classes_)
+knn_disp.plot(cmap=plt.cm.Blues)
+plt.title('Confusion Matrix for KNN Classifier')
+plt.show()
+
+# Print the confusion matrix values
+print("KNN Confusion Matrix:")
+print(knn_cm)
+'''
+'''
+# Scatter plot of KNN predictions
+plt.figure(figsize=(10, 6))
+sns.scatterplot(x=X_val['bmi'], y=X_val['blood_glucose_level'], hue=knn_y_pred_val, palette='Set1', style=y_val, markers=["o", "X"], alpha=0.7)
+plt.xlabel('BMI')
+plt.ylabel('Blood Glucose Level')
+plt.title('KNN Classifier Predictions: BMI vs Blood Glucose Level')
+plt.legend(title='Predicted Class', labels=['No Diabetes', 'Diabetes'])
+plt.grid()
+plt.show()
+'''
 
 '''
 # Compute ROC-AUC and plot ROC curve for KNN
@@ -175,6 +224,39 @@ nb_val_prob = NB.predict_proba(X_val)[:, 1]  # Probabilities for the positive cl
 # Compute ROC-AUC and plot ROC curve for Naive Bayes
 fpr_nb, tpr_nb, thresholds_nb = metrics.roc_curve(y_val, nb_val_prob)
 roc_auc_nb = metrics.roc_auc_score(y_val, nb_val_prob)
+
+'''
+# Create and display the confusion matrix for Naive Bayes
+nb_cm = confusion_matrix(y_val, nb_y_pred_val)
+nb_disp = ConfusionMatrixDisplay(confusion_matrix=nb_cm, display_labels=NB.classes_)
+nb_disp.plot(cmap=plt.cm.Blues)
+plt.title('Confusion Matrix for Naive Bayes Classifier')
+plt.show()
+
+# Print the confusion matrix values
+print("Naive Bayes Confusion Matrix:")
+print(nb_cm)
+'''
+
+'''
+# Layered Histograms
+features_to_plot = ['bmi', 'blood_glucose_level']  # Select features for the histograms
+
+for feature in features_to_plot:
+    plt.figure(figsize=(10, 6))
+    # Plot histogram for each class
+    plt.hist(X_val.loc[y_val == 0, feature], bins=30, alpha=0.5, label='No Diabetes', color='blue')
+    plt.hist(X_val.loc[y_val == 1, feature], bins=30, alpha=0.5, label='Diabetes', color='red')
+    
+    plt.xlabel(feature)
+    plt.ylabel('Frequency')
+    plt.title(f'Layered Histogram of {feature} by Class')
+    plt.legend()
+    plt.grid()
+    plt.tight_layout()
+    plt.show()
+'''
+
 '''
 # Plotting the ROC curve for Naive Bayes
 plt.figure(figsize=(8, 6))
@@ -190,7 +272,7 @@ plt.grid()
 plt.tight_layout()
 plt.show()
 '''
-
+'''
 # Create a new figure for the combined ROC curve
 plt.figure(figsize=(10, 8))
 
@@ -216,3 +298,4 @@ plt.legend(loc="lower right")
 plt.grid()
 plt.tight_layout()
 plt.show()
+'''

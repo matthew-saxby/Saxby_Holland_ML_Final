@@ -6,6 +6,3 @@
     -count plots for DT
     -scatter plots for the KNN
     -NB layered histograms
-
-matt.saxb@gmail.com
-mjholland2004@gmail.com
