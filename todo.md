@@ -1,8 +1,0 @@
--make a power point
-    -on the rubric
--false negative rate
--reflection
--more EDA for presentation
-    -count plots for DT
-    -scatter plots for the KNN
-    -NB layered histograms
