@@ -4,7 +4,7 @@ from sklearn.model_selection import train_test_split
 from sklearn import metrics
 import matplotlib.pyplot as plt
 from sklearn.tree import DecisionTreeClassifier, plot_tree
-from evaluate_model import printPerformance
+from evaluate_model import printPerformance, printTestPerformance
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn import set_config
 from sklearn.model_selection import train_test_split
@@ -53,7 +53,9 @@ model.fit(X_train[features],y_train)
 dt_y_pred_train = model.predict(X_train[features])
 
 #predict on the validation data
-dt_y_pred_test = model.predict(X_val[features])
+dt_y_pred_val = model.predict(X_val[features])
+dt_y_pred_test = model.predict(X_test[features])
+
 
 #Evaluate the train model
 dt_train_accuracy = metrics.accuracy_score(y_train,dt_y_pred_train)
@@ -61,10 +63,16 @@ dt_train_f1 = metrics.f1_score(y_train, dt_y_pred_train)
 
 
 #Evaluate the test model
-dt_val_accuracy = metrics.accuracy_score(y_val,dt_y_pred_test)
-dt_val_f1 = metrics.f1_score(y_val,dt_y_pred_test)
+dt_val_accuracy = metrics.accuracy_score(y_val,dt_y_pred_val)
+dt_val_f1 = metrics.f1_score(y_val,dt_y_pred_val)
+
+#Evaluate the test model
+dt_test_accuracy = metrics.accuracy_score(y_test,dt_y_pred_test)
+dt_test_f1 = metrics.f1_score(y_test,dt_y_pred_test)
 
 
+
+printTestPerformance(dt_val_accuracy, dt_val_f1, dt_test_accuracy, dt_test_f1)
 
 
 
