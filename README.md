@@ -10,3 +10,7 @@ In the implementation of our models and analysis, we struggled when working with
 Matthew 25:35-40 says, "For I was hungry and you gave me something to eat, I was thirsty and you gave me something to drink, I was a stranger and you invited me in, I needed clothes and you clothed me, I was sick and you looked after me, I was in prison and you came to visit me”. We encourage those using this model to help others to use these ideas. Helping those who need expertise and advice in tough times. This is especially true for doctors, Mark 2:17 says, “It is not the healthy who need a doctor, but the sick. I have not come to call the righteous, but sinners.”.
 
 In the medical field, a lot of work and expertise lies in the hands of doctors who have to care for many different patients. This workload can be difficult and at times mistakes can be made because of the stress that creates. We want to introduce help in the form of data-driven assistance like our model. But we should not only be Data-Evangelists, we should also use this opportunity to Evangelize our faith. Oftentimes medical environments can be difficult places to work because so many around are sick and not feeling well. Being a positive and helpful influence in those places can help spread the love of God.  
+
+
+### Presentation Slides
+https://docs.google.com/presentation/d/1QfOqXJ2lslBPE2QeMPkI7KlQ6scD0r7EWGbLoh3nmDg/edit?usp=sharing
