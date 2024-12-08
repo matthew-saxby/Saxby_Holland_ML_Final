@@ -17,7 +17,7 @@ for col in diabetes_processed.columns:
         stacked_data = diabetes_processed.groupby([col, binary_var]).size().unstack(fill_value=0)
 
         # Plot stacked bar plot
-        ax = stacked_data.plot(kind='bar', stacked=True, figsize=(10, 6), color=['#79a3b1', '#ef9b20'])
+        ax = stacked_data.plot(kind='bar', stacked=True, figsize=(6, 6), color=['#79a3b1', '#ef9b20'])
         plt.title(f'Stacked Bar Plot of {col} by {binary_var}')
         plt.xlabel(col)
         plt.ylabel('Count')
