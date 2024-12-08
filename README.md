@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <h1>DIABETES ML PROJECT</h1>
 
 
@@ -5,6 +6,11 @@ Final Reflection
 Intro to Data Science  
 Dr. Mishra  
 Mason Holland, Matthew Saxby
+=======
+<a id="readme-top"></a>
+<h1 align="center">Diabetes ML Project</h1>
+
+>>>>>>> origin/main
 
 	This project was a fruitful project for both of us because of the weight of the subject we are approaching. Thousands of people struggle every day with diabetes and that struggle is even more pointed when it goes undiagnosed. We hope that with this model we have created, it will help assist doctors with the diagnosis process and help quicken the response times for those who suffer from diabetes. We anticipate this model being used by a hospital or another organization who specializes in care. We also would anticipate that they would have more data for the model to train with. While we were very happy with the number of data points we had to train with personally, we wish we had more features as we believe that it would have helped to fill some of the gray areas in the model’s predictions.
 
