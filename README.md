@@ -1,6 +1,5 @@
 <a id="readme-top"></a>
-<!-- ABOUT THE PROJECT -->
-### Diabetes ML Project
+<h1 align="center">Diabetes ML Project</h1>
 
 
 <!-- ABOUT THE PROJECT -->
